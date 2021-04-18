@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"> 
+  <title>Upload Image</title>
+</head>
+
+<body>
+  <div class="header">
+   <!-- <div class="logo"></div>-->
+    <h1 class="heading">Handwritten Character Recognition</h1>
+  </div>
+
+  <div class="upload-div">
+    <div style="position: relative;" class="upload">
+      <h1 style="position: absolute;top: 1rem;left: 50%;transform:translate(-50%,0);">Browse file to Upload</h1>
+     
+
+      <form style="padding: 3rem;" method=post enctype=multipart/form-data>
+        <p>
+          <input class="browse" type=file name=file>
+          <input type=submit value=Upload style="background-color: rgb(70, 184, 236);border-radius: 2rem;padding: .25rem 2rem;">
+      </form>
+
+      {% if msg %}
+      <h1>{{ msg }}</h1>
+      {% endif %}
+
+      <h1 style="margin-top: 1rem;">Result:</h1>
+      {% if img_src %}
+      <img class="uploaded-image" src="{{ img_src }}">
+      {% endif %}
+
+      {% if extracted_text %}
+      <p> The extracted text from the image above is: <br><b> <span style="margin-top: 1rem;font-size: 2rem;">{{ extracted_text }} </span></b></p>
+
+      {% else %}
+      The extracted text will be displayed here
+      {% endif %}
+    </div>
+  </div>
+
+
+</body>
+
+</html>
